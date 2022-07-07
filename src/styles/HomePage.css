@@ -1,0 +1,35 @@
+.HomePage {
+    background-image: url("../images/homepage-background.jpeg");
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(152, 218, 255);
+}
+
+.pokemon-logo {
+    width: 500px;
+    margin-top: 150px;
+}
+
+.pokemon-version-logo {
+    width: 300px;
+    margin-top: 20px;
+}
+
+.click-anywhere-to-start {
+    font-size: 25px;
+    font-family: fantasy;
+    animation: blinker 1s infinite step-end;
+    margin-top: 40px;
+    font-weight: bold;
+
+}
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
