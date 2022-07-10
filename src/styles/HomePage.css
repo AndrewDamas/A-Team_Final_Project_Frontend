@@ -1,35 +1,63 @@
 .HomePage {
-    background-image: url("../images/homepage-background.jpeg");
-    background-position: center; 
-    background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    background-color: rgb(152, 218, 255);
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .pokemon-logo {
-    width: 500px;
-    margin-top: 150px;
+    max-width: 100%;
+    height:auto;
+    margin-top: 70px;
 }
 
 .pokemon-version-logo {
-    width: 300px;
-    margin-top: 20px;
+    width: 60%;
+    margin-top: 70px;
 }
 
 .click-anywhere-to-start {
     font-size: 25px;
     font-family: fantasy;
     animation: blinker 1s infinite step-end;
-    margin-top: 40px;
+    margin-top: 140px;
     font-weight: bold;
+    background: transparent;
+    border: none
 
 }
   
 @keyframes blinker {
     50% {
         opacity: 0;
+    }
+}
+@media only screen and (min-width: 768px ) {
+    .HomePage{
+        width:65%
+    }
+    .pokemon-version-logo{
+        width: 65%
+    }
+}
+
+@media only screen and (min-width: 1024px ) {
+    .HomePage{
+        width:65%
+    }
+    .pokemon-version-logo{
+        width: 65%
+    }
+}
+
+@media only screen and (min-width: 1200px ) {
+    .HomePage{
+        width:30%
+    }
+    .pokemon-version-logo{
+        width: 65%
     }
 }

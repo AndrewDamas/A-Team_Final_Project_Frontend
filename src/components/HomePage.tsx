@@ -9,7 +9,7 @@ export default function HomePage(){
         <div className="HomePage" onClick={() => {navigate("/log-in")}}>
             <img className="pokemon-logo" src={pokemonLogo} alt="Pokemon" />
             <img className="pokemon-version-logo" src={pokemonVersionLogo} alt="Pokemon Javascript Version" />
-            <p className="click-anywhere-to-start">Click anywhere to start</p>
+            <button className="click-anywhere-to-start">Click anywhere to start</button>
         </div>
     )
 }
