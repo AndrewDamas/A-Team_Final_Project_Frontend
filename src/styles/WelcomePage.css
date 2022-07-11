@@ -1,0 +1,13 @@
+.WelcomePage {
+    background-image: linear-gradient(rgb(185, 224, 185), rgb(16, 200, 228));
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .ProfessorOak {
+      height: 200px;
+      width: 200px;
+      display: flex;
+      margin: 0 auto;
+   
+  }
