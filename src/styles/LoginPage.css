@@ -1,16 +1,3 @@
-.LoginPage {
-  background-image: url("../images/homepage-background.jpeg");
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: rgb(152, 218, 255);
-  background-size: cover;
-}
-
 .LoginHeader {
   width: 100%;
   text-align: center;
