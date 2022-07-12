@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/WelcomePage.css"
-import professorOak from "../images/professor-oak.png";
+import professorOak from "../images/professor-oak2.webp";
 
 export default function WelcomePage() {
   return (
