@@ -59,7 +59,7 @@
   .Container {
     float: right;
     margin-left: 50%;
-    margin-right: 10px;
+    margin-right: 100px;
     flex-direction: column;
     padding-top: 5%;
   }
