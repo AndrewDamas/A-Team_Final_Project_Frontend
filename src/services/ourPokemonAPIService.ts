@@ -1,5 +1,6 @@
-import Pokemon from "../models/pokemonInterface";
+import {Pokemon} from "../models/pokemonInterface";
 import axios from "axios";
+import Account from "../models/pokemonInterface";
 const baseUrl = process.env.REACT_APP_API_URL;
 
 
@@ -7,7 +8,12 @@ if (!baseUrl) {
     console.error("Missing config REACT_APP_OUR_POKEMON_API_URL");
 }
 
-export function fetchOurPokemon():Promise<Pokemon[]>{
-    return axios.get<Pokemon[]>(`${baseUrl}/our_pokemon`)
-    .then(res => res.data);
+export function fetchAccounts():Promise<Account>{
+    return axios.get<Account[]>(`${baseUrl}/accounts`)
+    .then(res => {return res.data[0]});
+}
+
+export function addPokemon(pokemon:Pokemon){
+    return axios.put(`${baseUrl}`)
+    .then(response => response.data);
 }

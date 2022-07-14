@@ -1,5 +1,17 @@
-export default interface Pokemon {
+export default interface Account {
     _id?: string,
+    email: string,
+    username: string,
+    password: string,
+    ourPokemon: Pokemon[],
+    character_name: string,
+    badges: string[],
+    bank: number,
+    doneWithTutorial: boolean
+}
+
+export interface Pokemon {
+    _id: number,
     base_experience: number,
     moves: Move[],
     name: string,

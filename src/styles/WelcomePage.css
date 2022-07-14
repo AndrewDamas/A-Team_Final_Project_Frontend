@@ -36,6 +36,10 @@
   margin-top: 20px;
 }
 
+.SlideButton button {
+  z-index: 100
+}
+
 @font-face {
   font-family: Pokemon GB;
   src: url(../fonts/PokemonGb-RAeo.ttf);
@@ -57,6 +61,8 @@
   }
 
   .Container {
+    flex-direction: column;
+    justify-content: center;
     float: right;
     margin-left: 50%;
     margin-right: 100px;
@@ -67,11 +73,9 @@
   .TextBox {
     font-size: 25px;
     padding: 10px 30px 10px 30px;
-    margin-right: 100px;
   }
 
   .SlideButton {
     flex-direction: column;
-    margin-right: 300px;
   }
 }
