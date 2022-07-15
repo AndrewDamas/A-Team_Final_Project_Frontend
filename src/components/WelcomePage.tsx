@@ -2,14 +2,75 @@ import React, { useEffect, useState } from "react";
 import "../styles/WelcomePage.css";
 import professorOak from "../images/professor-oak2.webp";
 import { getSpecificPokemon } from "../services/pokeAPIService";
-import { Pokemon } from "../models/pokemonInterface";
+import Account, { Pokemon } from "../models/pokemonInterface";
+import { addPokemon, fetchAccounts } from "../services/ourPokemonAPIService";
 
 
 export default function WelcomePage() {
   const [slides, setSlides] = useState(1);
-  const [bulbasaur, setBulbasaur] = useState<Pokemon>();
-  const [charmander, setCharmander] = useState<Pokemon>();
-  const [squirtle, setSquirtle] = useState<Pokemon>();
+  const [account, setAccount] = useState<Account>();
+  const [bulbasaur, setBulbasaur] = useState<Pokemon>({
+    id: 1,
+    base_experience: 100,
+    moves: [],
+    name: "test",
+    species:{
+      url: ""
+    },
+    sprites:
+    {
+      back_default: "",
+      back_female: "",
+      front_default: "",
+      front_female: "",
+    },
+    stats:[],
+    types: []});
+  const [charmander, setCharmander] = useState<Pokemon>({
+    id: 1,
+    base_experience: 100,
+    moves: [],
+    name: "test",
+    species:{
+      url: ""
+    },
+    sprites:
+    {
+      back_default: "",
+      back_female: "",
+      front_default: "",
+      front_female: "",
+    },
+    stats:[],
+    types: []});
+  const [squirtle, setSquirtle] = useState<Pokemon>({
+    id: 1,
+    base_experience: 100,
+    moves: [],
+    name: "test",
+    species:{
+      url: ""
+    },
+    sprites:
+    {
+      back_default: "",
+      back_female: "",
+      front_default: "",
+      front_female: "",
+    },
+    stats:[],
+    types: []});
+
+  async function slidesFunction(){
+    setSlides(slides + 1)
+  }
+
+  useEffect(() => {
+    fetchAccounts()
+    .then(data =>
+      setAccount(data)  
+    )
+  })
 
   useEffect(() => {
     getSpecificPokemon("bulbasaur")
@@ -117,29 +178,93 @@ export default function WelcomePage() {
              : slides === 6 ? 
               <div className="Container">
               <div className="starter-pokemon">
-                <button>
+                <button onClick={(e) => {addPokemon({
+                id: bulbasaur.id,
+                base_experience: bulbasaur.base_experience,
+                moves: bulbasaur.moves,
+                name: bulbasaur.name,
+                species:{
+                  url: bulbasaur.species.url
+                },
+                sprites:
+                {
+                  back_default: bulbasaur.sprites.back_default,
+                  back_female: bulbasaur.sprites.back_female,
+                  front_default: bulbasaur.sprites.front_default,
+                  front_female: bulbasaur.sprites.front_female,
+                },
+                stats: bulbasaur.stats,
+                types: bulbasaur.types});
+                setSlides(slides + 1);
+                }}>
                 <img src={bulbasaur?.sprites.front_default} alt="" /> 
                 <p>{bulbasaur?.name.toUpperCase()}</p>
                 </button>
-                <button>
+                <button onClick={(e) => {addPokemon({
+                id: charmander.id,
+                base_experience: charmander.base_experience,
+                moves: charmander.moves,
+                name: charmander.name,
+                species:{
+                  url: charmander.species.url
+                },
+                sprites:
+                {
+                  back_default: charmander.sprites.back_default,
+                  back_female: charmander.sprites.back_female,
+                  front_default: charmander.sprites.front_default,
+                  front_female: charmander.sprites.front_female,
+                },
+                stats: charmander.stats,
+                types: charmander.types})
+                setSlides(slides + 1);
+                }}>
                 <img src={charmander?.sprites.front_default} alt="" />
                 <p>{charmander?.name.toUpperCase()}</p>
                 </button>
-                <button>
+                <button onClick={(e) => {addPokemon({
+                id: squirtle.id,
+                base_experience: squirtle.base_experience,
+                moves: squirtle.moves,
+                name: squirtle.name,
+                species:{
+                  url: squirtle.species.url
+                },
+                sprites:
+                {
+                  back_default: squirtle.sprites.back_default,
+                  back_female: squirtle.sprites.back_female,
+                  front_default: squirtle.sprites.front_default,
+                  front_female: squirtle.sprites.front_female,
+                },
+                stats: squirtle.stats,
+                types: squirtle.types});
+                setSlides(slides + 1);
+                }}>
                 <img src={squirtle?.sprites.front_default} alt="" />
                 <p>{squirtle?.name.toUpperCase()}</p>
                 </button>
               </div>
                <div className="SlideButton">
-                 <button
-                   onClick={() => setSlides(slides + 1)}
-                 >
-                   Next
-                 </button>
                  </div>
                </div>
-               :
-              <p></p>
+               : slides === 7 ?
+               <div className="Container">
+               <div className="TextBox">
+                 <p> 
+                   Congrats! You have selected the {account?.ourPokemon[0].types[0].type.name} type POKÉMON, {account?.ourPokemon[0].name.toUpperCase()}!
+                 </p>
+                 </div>
+                 <div className="SlideButton">
+                   <button
+                     onClick={() => setSlides(slides + 1)}
+                   >
+                     Next
+                   </button>
+                   </div>
+                 </div>
+                 :
+                 <p></p>
         }
       </div>
     </div>

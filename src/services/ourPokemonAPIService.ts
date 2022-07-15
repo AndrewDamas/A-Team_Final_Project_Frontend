@@ -13,7 +13,7 @@ export function fetchAccounts():Promise<Account>{
     .then(res => {return res.data[0]});
 }
 
-export function addPokemon(pokemon:Pokemon){
-    return axios.put(`${baseUrl}`)
+export function addPokemon(pokemon: Pokemon){
+    return axios.put(`${baseUrl}`, pokemon)
     .then(response => response.data);
 }

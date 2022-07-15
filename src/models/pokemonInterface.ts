@@ -7,11 +7,11 @@ export default interface Account {
     character_name: string,
     badges: string[],
     bank: number,
-    doneWithTutorial: boolean
+    doneWithTutorial: boolean,
 }
 
 export interface Pokemon {
-    _id: number,
+    id: number,
     base_experience: number,
     moves: Move[],
     name: string,
