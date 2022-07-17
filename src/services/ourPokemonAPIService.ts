@@ -17,3 +17,7 @@ export function addPokemon(pokemon: Pokemon){
     return axios.put(`${baseUrl}`, pokemon)
     .then(response => response.data);
 }
+
+export function setStats(){
+    
+}
