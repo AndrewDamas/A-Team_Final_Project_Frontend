@@ -178,7 +178,7 @@ export default function WelcomePage() {
              : slides === 6 ? 
               <div className="Container">
               <div className="starter-pokemon">
-                <button onClick={(e) => {addPokemon({
+                <button className="starterBtn" onClick={(e) => {addPokemon({
                 id: bulbasaur.id,
                 base_experience: bulbasaur.base_experience,
                 moves: bulbasaur.moves,
@@ -197,10 +197,10 @@ export default function WelcomePage() {
                 types: bulbasaur.types});
                 setSlides(slides + 1);
                 }}>
-                <img src={bulbasaur?.sprites.front_default} alt="" /> 
-                <p>{bulbasaur?.name.toUpperCase()}</p>
+                <img className="starterImg" src={bulbasaur?.sprites.front_default} alt="" /> 
+                <p className="starterName">{bulbasaur?.name.toUpperCase()}</p>
                 </button>
-                <button onClick={(e) => {addPokemon({
+                <button className="starterBtn" onClick={(e) => {addPokemon({
                 id: charmander.id,
                 base_experience: charmander.base_experience,
                 moves: charmander.moves,
@@ -219,10 +219,10 @@ export default function WelcomePage() {
                 types: charmander.types})
                 setSlides(slides + 1);
                 }}>
-                <img src={charmander?.sprites.front_default} alt="" />
-                <p>{charmander?.name.toUpperCase()}</p>
+                <img className = "starterImg" src={charmander?.sprites.front_default} alt="" />
+                <p className = "starterName">{charmander?.name.toUpperCase()}</p>
                 </button>
-                <button onClick={(e) => {addPokemon({
+                <button className="starterBtn" onClick={(e) => {addPokemon({
                 id: squirtle.id,
                 base_experience: squirtle.base_experience,
                 moves: squirtle.moves,
@@ -241,8 +241,8 @@ export default function WelcomePage() {
                 types: squirtle.types});
                 setSlides(slides + 1);
                 }}>
-                <img src={squirtle?.sprites.front_default} alt="" />
-                <p>{squirtle?.name.toUpperCase()}</p>
+                <img className= "starterImg" src={squirtle?.sprites.front_default} alt="" />
+                <p className="starterName">{squirtle?.name.toUpperCase()}</p>
                 </button>
               </div>
                <div className="SlideButton">
