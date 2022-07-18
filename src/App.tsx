@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import WelcomePage from './components/WelcomePage';
+import TutorialBattle from './components/TutorialBattle';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/log-in" element={<LoginPage/>}/>
           <Route path="/welcome" element={<WelcomePage/>}/>
+          <Route path="/tutorial-battle" element={<TutorialBattle/>}/>
         </Routes>
       </Router>
     </div>

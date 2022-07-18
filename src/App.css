@@ -2,3 +2,8 @@ html {
     background: url(./images/homepage-background.jpeg) no-repeat center center fixed; 
     background-size: cover;
   }
+
+  @font-face {
+    font-family: Pokemon GB;
+    src: url(./fonts/PokemonGb-RAeo.ttf);
+  }
