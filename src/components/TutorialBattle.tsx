@@ -3,12 +3,24 @@ import "../styles/BattleScreen.css"
 import MaleSymbol from "../images/gender-symbols/male-symbol.png";
 import FemaleSymbol from "../images/gender-symbols/female-symbol.png";
 import { fetchAccounts } from '../services/ourPokemonAPIService';
-import Account from '../models/pokemonInterface';
+import Account, { Move } from '../models/pokemonInterface';
+import { fetchOpponents } from '../services/opponentsService';
+import Opponent from '../models/OpponentInterface';
+import { getMoveData } from '../services/pokeAPIService';
+import MoveDetails from '../models/moveInterface';
 
 export default function TutorialBattle() {
     const [account, setAccount] = useState<Account>();
+    const [opponent, setOpponent] = useState<Opponent>();
     const [menu, setMenu] = useState("main-menu");
-    const [battleWords, setBattleWords] = useState<string>("pokemon-choices")
+    const [battleWords, setBattleWords] = useState<string>("pokemon-choices");
+
+    const [ourAttackChoice, setOurAttackChoice] = useState<Move>();
+    const [ourAttack, setOurAttack] = useState<MoveDetails>();
+
+    const myHealthBar = {
+        width: ((account?.ourPokemon[0]?.current_hp! / account?.ourPokemon[0]?.stats[account.ourPokemon[0].stats.findIndex(stat => stat.stat.name === "hp")].base_stat!) * 100) + "%"
+    }
 
     useEffect(() => {
         fetchAccounts()
@@ -16,6 +28,21 @@ export default function TutorialBattle() {
           setAccount(data)  
         )
       })
+
+    useEffect(() => {
+        fetchOpponents()
+        .then(data => {
+            let currentOpponent = data.find(name => name.name === "PROF OAK");
+            setOpponent(currentOpponent);
+        })
+    })
+
+    useEffect(() => {
+        getMoveData(ourAttackChoice?.move.name!)
+        .then(data =>
+            setOurAttack(data)
+        )
+    }, [ourAttackChoice])
 
     return (
         <div className='BattleScreen'>
@@ -25,14 +52,14 @@ export default function TutorialBattle() {
                         <div className='battle-opponent-stats'>
                             <div className='battle-opponent-stats-top'>
                                 <div className='battle-stats-name-gender'>
-                                    <p className='battle-name'>{account?.ourPokemon[0].name.toUpperCase()}</p> 
+                                    <p className='battle-name'>{opponent?.pokemon[0].name.toUpperCase()}</p> 
                                     {
-                                        account?.ourPokemon[0].gender === "male" ?
+                                        opponent?.pokemon[0].gender === "male" ?
                                         <img src={MaleSymbol} alt="male" className="battle-gender"/> :
                                         <img src={FemaleSymbol} alt="female" className="battle-gender"/> 
                                     }
                                 </div>
-                                <p className='battle-level'>Lv{account?.ourPokemon[0].level}</p>
+                                <p className='battle-level'>Lv{opponent?.pokemon[0].level}</p>
                             </div>
                             <div className='battle-opponent-stats-bottom'>
                                 <div className='battle-health'>
@@ -45,7 +72,7 @@ export default function TutorialBattle() {
                         </div>
                     </div>
                     <div className='battle-visual-top-right'>
-                        <img src={account?.ourPokemon[0].sprites.front_default} alt="Opponent-Pokemon" className="battle-pokemon-img"/>
+                        <img src={opponent?.pokemon[0].sprites.front_default} alt="Opponent-Pokemon" className="battle-pokemon-img"/>
                     </div>
                 </div>
                 <div className='battle-visual-bottom'>
@@ -70,7 +97,7 @@ export default function TutorialBattle() {
                                     <div className='battle-health'>
                                         <p className='battle-health-p'>HP</p>
                                         <div className='battle-health-bar-outside'>
-                                            <div className='battle-health-bar-inside'></div>
+                                            <div style={myHealthBar} className='battle-health-bar-inside'></div>
                                         </div>
                                     </div>
                                     <p className='battle-health-numbers'>{account?.ourPokemon[0].current_hp}/ {account?.ourPokemon[0].stats[account?.ourPokemon[0].stats.findIndex(stat => stat.stat.name === "hp")].base_stat}</p>
@@ -107,7 +134,9 @@ export default function TutorialBattle() {
                 <div className='battle-words'>
                     <div className='battle-choices'>
                         <div className='battle-choices-top'>
-                            <button>{account?.ourPokemon[0].moves[0].move.name.toUpperCase()}</button>
+                            <button onClick={(e) => {
+                                setOurAttackChoice(account?.ourPokemon[0].moves[0]);
+                            }}>{account?.ourPokemon[0].moves[0].move.name.toUpperCase()}</button>
                             <button>{account?.ourPokemon[0].moves[1].move.name.toUpperCase()}</button>
                         </div>
                         <div className='battle-choices-top'>

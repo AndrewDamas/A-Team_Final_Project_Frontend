@@ -28,7 +28,8 @@ export interface Pokemon {
 
 export interface Move {
     move: {
-        name: string
+        name: string,
+        url: string
     },
     version_group_details: [
         {
