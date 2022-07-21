@@ -6,9 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import WelcomePage from './components/WelcomePage';
 import TutorialBattle from './components/TutorialBattle';
+import AuthContextProvider from './context/AuthContextProvider';
+
 
 function App() {
   return (
+    <AuthContextProvider>
     <div className="App">
       <Router>
         <Routes>
@@ -19,6 +22,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </AuthContextProvider>
   );
 }
 
