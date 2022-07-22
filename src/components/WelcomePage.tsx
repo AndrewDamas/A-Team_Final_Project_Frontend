@@ -5,7 +5,7 @@ import { getSpecificPokemon } from "../services/pokeAPIService";
 import Account, { Pokemon, Move } from "../models/pokemonInterface";
 import { addPokemon, fetchAccounts } from "../services/ourPokemonAPIService";
 import { useNavigate } from "react-router-dom";
-import { setOakPokemon } from "../services/opponentsService";
+import { setOakPokemon } from "../services/ourPokemonAPIService";
 
 
 export default function WelcomePage() {
@@ -13,6 +13,7 @@ export default function WelcomePage() {
   const [starterPokemon, setStarterPokemon] = useState<Pokemon>();
   const [account, setAccount] = useState<Account>();
   const [bulbasaur, setBulbasaur] = useState<Pokemon>({
+    active: true,
     id: 1,
     level: 0,
     gender: "",
@@ -34,6 +35,7 @@ export default function WelcomePage() {
     types: []});
   const [bulbasaurStartingMoves, setBulbasaurStartingMoves] = useState<Move[]>();
   const [charmander, setCharmander] = useState<Pokemon>({
+    active: true,
     id: 1,
     level: 0,
     gender: "",
@@ -55,6 +57,7 @@ export default function WelcomePage() {
     types: []});
   const [charmanderStartingMoves, setCharmanderStartingMoves] = useState<Move[]>();
   const [squirtle, setSquirtle] = useState<Pokemon>({
+    active: true,
     id: 1,
     level: 0,
     gender: "",
@@ -132,6 +135,7 @@ export default function WelcomePage() {
   function oakPokemon(){
     if (starterPokemon?.name === "bulbasaur"){
       setOakPokemon({
+        active: true,
         id: charmander.id,
         level: 5,
         gender: "male",
@@ -178,6 +182,7 @@ export default function WelcomePage() {
         types: charmander.types})
     } else if (starterPokemon?.name === "charmander"){
       setOakPokemon({
+        active: true,
         id: squirtle.id,
         level: 5,
         gender: "male",
@@ -224,6 +229,7 @@ export default function WelcomePage() {
         types: squirtle.types})
     } else if (starterPokemon?.name === "squirtle"){
       setOakPokemon({
+        active: true,
         id: bulbasaur.id,
         level: 5,
         gender: "male",
@@ -269,7 +275,6 @@ export default function WelcomePage() {
         ],
         types: bulbasaur.types})
     }
-    console.log(starterPokemon?.name)
   }
 
   return (
@@ -360,6 +365,7 @@ export default function WelcomePage() {
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(bulbasaur);
                 addPokemon({
+                active: true,
                 id: bulbasaur.id,
                 level: 5,
                 gender: "male",
@@ -412,6 +418,7 @@ export default function WelcomePage() {
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(charmander);
                 addPokemon({
+                active: true,
                 id: charmander.id,
                 level: 5,
                 gender: "male",
@@ -464,6 +471,7 @@ export default function WelcomePage() {
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(squirtle);
                 addPokemon({
+                active: true,
                 id: squirtle.id,
                 level: 5,
                 gender: "male",
@@ -529,6 +537,7 @@ export default function WelcomePage() {
                      onClick={() => {
                       setSlides(slides + 1);
                       oakPokemon();
+                      console.log(oakPokemon());
                     }}
                    >
                      Next

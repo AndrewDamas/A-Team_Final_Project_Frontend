@@ -11,6 +11,7 @@ export default interface MoveDetails {
         }
     },
     pp: number,
+    power: number,
     stat_changes: [
         {
             change: number,
