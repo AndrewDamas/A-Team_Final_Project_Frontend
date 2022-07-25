@@ -18,6 +18,16 @@ export function addPokemon(pokemon: Pokemon){
     .then(response => response.data);
 }
 
+export function setOakPokemon(pokemon: Pokemon){
+    return axios.put(`${baseUrl}/set-oak`, pokemon)
+    .then(response => response.data);
+}
+
+export function calculateOurBattleDamage(battleDamage: number){
+    return axios.put(`${baseUrl}/our-battle-damage`, battleDamage)
+    .then(response => response.data);
+}
+
 export function setStats(){
-    
+
 }

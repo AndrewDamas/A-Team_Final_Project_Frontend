@@ -5,6 +5,7 @@ import { getSpecificPokemon } from "../services/pokeAPIService";
 import Account, { Pokemon, Move } from "../models/pokemonInterface";
 import { addPokemon, fetchAccounts } from "../services/ourPokemonAPIService";
 import { useNavigate } from "react-router-dom";
+import { setOakPokemon } from "../services/ourPokemonAPIService";
 
 
 export default function WelcomePage() {
@@ -12,6 +13,7 @@ export default function WelcomePage() {
   const [starterPokemon, setStarterPokemon] = useState<Pokemon>();
   const [account, setAccount] = useState<Account>();
   const [bulbasaur, setBulbasaur] = useState<Pokemon>({
+    active: true,
     id: 1,
     level: 0,
     gender: "",
@@ -33,6 +35,7 @@ export default function WelcomePage() {
     types: []});
   const [bulbasaurStartingMoves, setBulbasaurStartingMoves] = useState<Move[]>();
   const [charmander, setCharmander] = useState<Pokemon>({
+    active: true,
     id: 1,
     level: 0,
     gender: "",
@@ -54,6 +57,7 @@ export default function WelcomePage() {
     types: []});
   const [charmanderStartingMoves, setCharmanderStartingMoves] = useState<Move[]>();
   const [squirtle, setSquirtle] = useState<Pokemon>({
+    active: true,
     id: 1,
     level: 0,
     gender: "",
@@ -127,6 +131,151 @@ export default function WelcomePage() {
     }
     )
   })
+
+  function oakPokemon(){
+    if (starterPokemon?.name === "bulbasaur"){
+      setOakPokemon({
+        active: true,
+        id: charmander.id,
+        level: 5,
+        gender: "male",
+        current_hp: charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "hp")].base_stat + ((charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "hp")].base_stat / 50) * 5),
+        base_experience: charmander.base_experience,
+        moves: charmanderStartingMoves!,
+        name: charmander.name,
+        species:{
+          url: charmander.species.url
+        },
+        sprites:
+        {
+          back_default: charmander.sprites.back_default,
+          back_female: charmander.sprites.back_female,
+          front_default: charmander.sprites.front_default,
+          front_female: charmander.sprites.front_female,
+        },
+        stats: [
+          {
+            base_stat: charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "hp")].base_stat + ((charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "hp")].base_stat / 50) * 5),
+            stat: {
+                name: 'hp'
+            }
+          },
+          {
+            base_stat: charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "attack")].base_stat + ((charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "attack")].base_stat / 50) * 5),
+            stat: {
+                name: 'attack'
+            }
+          },
+          {
+            base_stat: charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "defense")].base_stat + ((charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "defense")].base_stat / 50) * 5),
+            stat: {
+                name: 'defense'
+            }
+          },
+          {
+            base_stat: charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "speed")].base_stat + ((charmander.stats[charmander.stats.findIndex(stat => stat.stat.name === "speed")].base_stat / 50) * 5),
+            stat: {
+                name: 'speed'
+            }
+          },
+        ],
+        types: charmander.types})
+    } else if (starterPokemon?.name === "charmander"){
+      setOakPokemon({
+        active: true,
+        id: squirtle.id,
+        level: 5,
+        gender: "male",
+        current_hp: squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "hp")].base_stat + ((squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "hp")].base_stat / 50) * 5),
+        base_experience: squirtle.base_experience,
+        moves: squirtleStartingMoves!,
+        name: squirtle.name,
+        species:{
+          url: squirtle.species.url
+        },
+        sprites:
+        {
+          back_default: squirtle.sprites.back_default,
+          back_female: squirtle.sprites.back_female,
+          front_default: squirtle.sprites.front_default,
+          front_female: squirtle.sprites.front_female,
+        },
+        stats: [
+          {
+            base_stat: squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "hp")].base_stat + ((squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "hp")].base_stat / 50) * 5),
+            stat: {
+                name: 'hp'
+            }
+          },
+          {
+            base_stat: squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "attack")].base_stat + ((squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "attack")].base_stat / 50) * 5),
+            stat: {
+                name: 'attack'
+            }
+          },
+          {
+            base_stat: squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "defense")].base_stat + ((squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "defense")].base_stat / 50) * 5),
+            stat: {
+                name: 'defense'
+            }
+          },
+          {
+            base_stat: squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "speed")].base_stat + ((squirtle.stats[squirtle.stats.findIndex(stat => stat.stat.name === "speed")].base_stat / 50) * 5),
+            stat: {
+                name: 'speed'
+            }
+          },
+        ],
+        types: squirtle.types})
+    } else if (starterPokemon?.name === "squirtle"){
+      setOakPokemon({
+        active: true,
+        id: bulbasaur.id,
+        level: 5,
+        gender: "male",
+        current_hp: bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "hp")].base_stat + ((bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "hp")].base_stat / 50) * 5),
+        base_experience: bulbasaur.base_experience,
+        moves: bulbasaurStartingMoves!,
+        name: bulbasaur.name,
+        species:{
+          url: bulbasaur.species.url
+        },
+        sprites:
+        {
+          back_default: bulbasaur.sprites.back_default,
+          back_female: bulbasaur.sprites.back_female,
+          front_default: bulbasaur.sprites.front_default,
+          front_female: bulbasaur.sprites.front_female,
+        },
+        stats: [
+          {
+            base_stat: bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "hp")].base_stat + ((bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "hp")].base_stat / 50) * 5),
+            stat: {
+                name: 'hp'
+            }
+          },
+          {
+            base_stat: bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "attack")].base_stat + ((bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "attack")].base_stat / 50) * 5),
+            stat: {
+                name: 'attack'
+            }
+          },
+          {
+            base_stat: bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "defense")].base_stat + ((bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "defense")].base_stat / 50) * 5),
+            stat: {
+                name: 'defense'
+            }
+          },
+          {
+            base_stat: bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "speed")].base_stat + ((bulbasaur.stats[bulbasaur.stats.findIndex(stat => stat.stat.name === "speed")].base_stat / 50) * 5),
+            stat: {
+                name: 'speed'
+            }
+          },
+        ],
+        types: bulbasaur.types})
+    }
+  }
 
   return (
     <div className="WelcomePage">
@@ -216,6 +365,7 @@ export default function WelcomePage() {
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(bulbasaur);
                 addPokemon({
+                active: true,
                 id: bulbasaur.id,
                 level: 5,
                 gender: "male",
@@ -268,6 +418,7 @@ export default function WelcomePage() {
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(charmander);
                 addPokemon({
+                active: true,
                 id: charmander.id,
                 level: 5,
                 gender: "male",
@@ -320,6 +471,7 @@ export default function WelcomePage() {
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(squirtle);
                 addPokemon({
+                active: true,
                 id: squirtle.id,
                 level: 5,
                 gender: "male",
@@ -382,7 +534,11 @@ export default function WelcomePage() {
                  </div>
                  <div className="SlideButton">
                    <button
-                     onClick={() => setSlides(slides + 1)}
+                     onClick={() => {
+                      setSlides(slides + 1);
+                      oakPokemon();
+                      console.log(oakPokemon());
+                    }}
                    >
                      Next
                    </button>
