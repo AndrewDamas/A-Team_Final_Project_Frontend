@@ -1,11 +1,16 @@
 .HomePage {
     height: 100vh;
+    background-color: rgb(152, 218, 255);
     display: flex;
     align-items: center;
+<<<<<<< Updated upstream
     flex-direction: column; 
     justify-content: center;
     width: 100%;
     margin: 0 auto;
+=======
+    flex-direction: column;
+>>>>>>> Stashed changes
 }
 
 .pokemon-logo {
@@ -15,7 +20,11 @@
 }
 
 .pokemon-version-logo {
+<<<<<<< Updated upstream
     width: 60%;
+=======
+    width: 300px;
+>>>>>>> Stashed changes
     margin-top: 70px;
 }
 
@@ -23,7 +32,11 @@
     font-size: 25px;
     font-family: fantasy;
     animation: blinker 1s infinite step-end;
+<<<<<<< Updated upstream
     margin-top: 140px;
+=======
+    margin-top: 101px;
+>>>>>>> Stashed changes
     font-weight: bold;
     background: transparent;
     border: none
