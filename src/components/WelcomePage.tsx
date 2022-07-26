@@ -86,7 +86,7 @@ export default function WelcomePage() {
     .then(data =>
       setAccount(data)  
     )
-  })
+  },[])
 
   useEffect(() => {
     getSpecificPokemon("bulbasaur")
@@ -100,7 +100,7 @@ export default function WelcomePage() {
       })
       setBulbasaurStartingMoves(arr);
     })
-  })
+  }, [])
 
   useEffect(() => {
     getSpecificPokemon("charmander")
@@ -115,7 +115,7 @@ export default function WelcomePage() {
       setCharmanderStartingMoves(arr);
     }
     )
-  })
+  },[])
 
   useEffect(() => {
     getSpecificPokemon("squirtle")
@@ -130,7 +130,7 @@ export default function WelcomePage() {
       setSquirtleStartingMoves(arr);
     }
     )
-  })
+  }, [])
 
   function oakPokemon(){
     if (starterPokemon?.name === "bulbasaur"){
