@@ -10,6 +10,7 @@ import { setOakPokemon } from "../services/ourPokemonAPIService";
 
 export default function WelcomePage() {
   const [slides, setSlides] = useState(1);
+  const [name, setName] = useState("");
   const [starterPokemon, setStarterPokemon] = useState<Pokemon>();
   const [account, setAccount] = useState<Account>();
   const [bulbasaur, setBulbasaur] = useState<Pokemon>({
@@ -321,11 +322,14 @@ export default function WelcomePage() {
               First, what is your name?
             </p>
             </div>
+            <label htmlFor="name"></label>
+            <input type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder="Enter Name Here" />
             <div className="SlideButton">
               <button
                 onClick={() => setSlides(slides + 1)}
+  
               >
-                Next
+                Submit
               </button>
               </div>
             </div>
@@ -333,7 +337,7 @@ export default function WelcomePage() {
         <div className="Container">
         <div className="TextBox">
           <p>
-            Right! So your name is RED!
+            Right! So your name is {name}!
           </p>
           </div>
           <div className="SlideButton">
