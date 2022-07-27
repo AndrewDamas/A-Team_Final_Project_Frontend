@@ -10,24 +10,29 @@
 }
 
 .pokemon-logo {
-    max-width: 100%;
-    height:auto;
-    margin-top: 70px;
+    max-width: 95%;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
 }
 
 .pokemon-version-logo {
-    width: 60%;
-    margin-top: 70px;
+    max-width: 300px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-.click-anywhere-to-start {
+.click-anywhere-to-start button {
     font-size: 25px;
+    display: flex;
+    justify-content: center;
     font-family: fantasy;
     animation: blinker 1s infinite step-end;
-    margin-top: 140px;
+    padding-top: 70px;
     font-weight: bold;
     background: transparent;
-    border: none
+    border: none;
 
 }
   
@@ -38,27 +43,18 @@
 }
 @media only screen and (min-width: 768px ) {
     .HomePage{
-        width:65%
-    }
-    .pokemon-version-logo{
-        width: 65%
-    }
+        max-width:65%;
+    } 
 }
 
 @media only screen and (min-width: 1024px ) {
     .HomePage{
         width:65%
     }
-    .pokemon-version-logo{
-        width: 65%
-    }
 }
 
 @media only screen and (min-width: 1200px ) {
     .HomePage{
         width:30%
-    }
-    .pokemon-version-logo{
-        width: 65%
     }
 }
