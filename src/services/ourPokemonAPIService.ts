@@ -27,7 +27,3 @@ export function calculateOurBattleDamage(battleDamage: number){
     return axios.put(`${baseUrl}/our-battle-damage`, battleDamage)
     .then(response => response.data);
 }
-
-export function setStats(){
-
-}

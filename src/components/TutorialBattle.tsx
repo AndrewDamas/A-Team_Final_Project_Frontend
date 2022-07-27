@@ -19,6 +19,8 @@ export default function TutorialBattle() {
 
     const [ourAttackChoice, setOurAttackChoice] = useState<string>("pound");
     const [randomNum, setRandomNum] = useState<number>(217);
+    const [randomNumCrit, setRandomNumCrit] = useState<number>(100);
+    const [crit, setCrit] = useState<number>(1);
     const [ourAttack, setOurAttack] = useState<MoveDetails>();
     const [battleDamage, setBattleDamage] = useState<number>(0);
 
@@ -76,12 +78,16 @@ export default function TutorialBattle() {
         .then(data => {
             setOurAttack(data);
             setRandomNum((Math.floor(Math.random() * 38) + 1) + 217);
+            setRandomNumCrit(Math.floor(Math.random() * 100) + 1);
+            if (randomNumCrit <= 6) {
+                setCrit(2)
+            }
             setType1(testEffectiveness(ourAttack?.type?.name!, opponent?.pokemon[0].types[0]?.type?.name!));
             setType2(testEffectiveness(ourAttack?.type?.name!, opponent?.pokemon[0].types[1]?.type?.name!));
             /* setBattleDamage(((((((2 * account?.ourPokemon[0]?.level!)/5)+2)* ourAttack?.power! * (account?.ourPokemon[0].stats[account.ourPokemon[0].stats.findIndex(stat => stat.stat.name === "attack")].base_stat! / opponent?.pokemon[0].stats[opponent.pokemon[0].stats.findIndex(stat => stat.stat.name === "defense")].base_stat!)) / 50) + 2) * type1 * type2 * randomNum); */
-            setBattleDamage(Math.round(((((((((2 * account?.ourPokemon[0]?.level!) / 5) + 2) * account?.ourPokemon[0].stats[account.ourPokemon[0].stats.findIndex(stat => stat.stat.name === "attack")].base_stat! * ourAttack?.power!) / opponent?.pokemon[0].stats[opponent.pokemon[0].stats.findIndex(stat => stat.stat.name === "defense")].base_stat!) / 50) + 2) * type1 * type2 * randomNum) / 255))
+            setBattleDamage(Math.round(((((((((2 * account?.ourPokemon[0]?.level!) / 5) + 2) * account?.ourPokemon[0].stats[account.ourPokemon[0].stats.findIndex(stat => stat.stat.name === "attack")].base_stat! * ourAttack?.power!) / opponent?.pokemon[0].stats[opponent.pokemon[0].stats.findIndex(stat => stat.stat.name === "defense")].base_stat!) / 50) + 2) * type1 * type2 * randomNum) / 255) * crit)
         })
-    }, [ourAttackChoice, randomNum])
+    }, [ourAttackChoice, randomNum, randomNumCrit])
 
 
     return (
