@@ -75,6 +75,13 @@
   display: flex;
 }
 
+.nameInput{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 @font-face {
   font-family: Pokemon GB;
   src: url(../fonts/PokemonGb-RAeo.ttf);
@@ -88,6 +95,13 @@
     margin-right: 65%;
     display: flex;
   }
+
+.nameInput{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
 }
 
 @media only screen and (min-width: 768px) {
@@ -157,4 +171,11 @@
     position: relative;
     bottom: 30px;
   }
+
+.nameBox{
+  width:150px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 75%;
+}
 }
