@@ -278,6 +278,13 @@ export default function WelcomePage() {
     }
   }
 
+  const bulbasaurSound = new Audio("Frontend/src/audio/bulbasaurAudio.mp3");
+
+  const charmanderSound = new Audio("Frontend/src/audio/charmanderAudio.mp3");
+
+  const squirtleSound = new Audio("Frontend/src/audio/squirtleAudio.mp3");
+
+
   return (
     <div className="WelcomePage">
       <img className="professor-oak" src={professorOak} alt="Professor Oak" />
@@ -366,7 +373,7 @@ export default function WelcomePage() {
                </div>
              </div>
              : slides === 6 ? 
-              <div className="Container">
+              <div className="pokeContainer">
               <div className="starter-pokemon">
                 <button className="starterBtn" onClick={(e) => {
                 setStarterPokemon(bulbasaur);
