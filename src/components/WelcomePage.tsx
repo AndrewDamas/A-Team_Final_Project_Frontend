@@ -317,13 +317,14 @@ export default function WelcomePage() {
           </div>
           : slides === 3 ? 
           <div className="Container">
-          <div className="TextBox">
+          <div className="TextBox" >
             <p>
               First, what is your name?
             </p>
             </div>
+            <div className="nameInput">
             <label htmlFor="name"></label>
-            <input type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder="Enter Name Here" />
+            <input className="nameBox" type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder="Enter Name Here" />
             <div className="SlideButton">
               <button
                 onClick={() => setSlides(slides + 1)}
@@ -332,6 +333,7 @@ export default function WelcomePage() {
                 Submit
               </button>
               </div>
+            </div>
             </div>
              : slides === 4 ? 
         <div className="Container">
