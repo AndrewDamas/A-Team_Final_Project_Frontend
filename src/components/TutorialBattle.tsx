@@ -89,10 +89,12 @@ export default function TutorialBattle() {
         })
     }, [ourAttackChoice, randomNum, randomNumCrit])
 
+    const battleAudio = (`${process.env.PUBLIC_URL}/PokeBattle.mp3`);
 
     return (
             gameState === "playing" ?
         <div className='BattleScreen'>
+            <audio className="battleAudio" src={`${process.env.PUBLIC_URL}/PokeBattle.mp3`} controls/>
                 <div className='battle-visual'>
                     <div className="battle-visual-top">
                         <div className="battle-visual-top-left">

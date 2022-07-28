@@ -23,3 +23,4 @@ export default function Audio(pokemonSound: string) {
         {start}
     )
 }
+
