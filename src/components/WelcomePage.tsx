@@ -278,12 +278,10 @@ export default function WelcomePage() {
     }
   }
 
-  const bulbasaurSound = new Audio("Frontend/src/audio/bulbasaurAudio.mp3");
-
-  const charmanderSound = new Audio("Frontend/src/audio/charmanderAudio.mp3");
-
-  const squirtleSound = new Audio("Frontend/src/audio/squirtleAudio.mp3");
-
+  // const bulbasaurSound = new Audio("Frontend/src/audio/bulbasaurAudio.mp3");
+  const bulbasaurSound = new Audio(`${process.env.PUBLIC_URL}/bulbasaurAudio.mp3`);
+  const charmanderSound = new Audio(`${process.env.PUBLIC_URL}/charmanderAudio.mp3`);
+const squirtleSound = new Audio(`${process.env.PUBLIC_URL}/squirtleAudio.mp3`);
 
   return (
     <div className="WelcomePage">
@@ -376,6 +374,7 @@ export default function WelcomePage() {
               <div className="pokeContainer">
               <div className="starter-pokemon">
                 <button className="starterBtn" onClick={(e) => {
+                bulbasaurSound.play();
                 setStarterPokemon(bulbasaur);
                 addPokemon({
                 active: true,
@@ -429,6 +428,7 @@ export default function WelcomePage() {
                 <p className="starterName">{bulbasaur?.name.toUpperCase()}</p>
                 </button>
                 <button className="starterBtn" onClick={(e) => {
+                charmanderSound.play();
                 setStarterPokemon(charmander);
                 addPokemon({
                 active: true,
@@ -482,6 +482,7 @@ export default function WelcomePage() {
                 <p className = "starterName">{charmander?.name.toUpperCase()}</p>
                 </button>
                 <button className="starterBtn" onClick={(e) => {
+                squirtleSound.play();
                 setStarterPokemon(squirtle);
                 addPokemon({
                 active: true,
